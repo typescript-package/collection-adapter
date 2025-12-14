@@ -131,21 +131,21 @@ MIT © typescript-package ([license][typescript-package-license])
 
 <!-- This package: typescript-package  -->
   <!-- GitHub: badges -->
-  [typescript-package-badge-issues]: https://img.shields.io/github/issues/typescript-package/collection
-  [isscript-package-badge-forks]: https://img.shields.io/github/forks/typescript-package/collection
-  [typescript-package-badge-stars]: https://img.shields.io/github/stars/typescript-package/collection
-  [typescript-package-badge-license]: https://img.shields.io/github/license/typescript-package/collection
+  [typescript-package-badge-issues]: https://img.shields.io/github/issues/typescript-package/collection-adapter
+  [isscript-package-badge-forks]: https://img.shields.io/github/forks/typescript-package/collection-adapter
+  [typescript-package-badge-stars]: https://img.shields.io/github/stars/typescript-package/collection-adapter
+  [typescript-package-badge-license]: https://img.shields.io/github/license/typescript-package/collection-adapter
   <!-- GitHub: badges links -->
-  [typescript-package-issues]: https://github.com/typescript-package/collection/issues
-  [typescript-package-forks]: https://github.com/typescript-package/collection/network
-  [typescript-package-license]: https://github.com/typescript-package/collection/blob/master/LICENSE
-  [typescript-package-stars]: https://github.com/typescript-package/collection/stargazers
+  [typescript-package-issues]: https://github.com/typescript-package/collection-adapter/issues
+  [typescript-package-forks]: https://github.com/typescript-package/collection-adapter/network
+  [typescript-package-license]: https://github.com/typescript-package/collection-adapter/blob/master/LICENSE
+  [typescript-package-stars]: https://github.com/typescript-package/collection-adapter/stargazers
 <!-- This package -->
 
 <!-- Package: typescript-package -->
   <!-- npm -->
-  [typescript-package-npm-badge-svg]: https://badge.fury.io/js/@typescript-package%2Fcollection.svg
-  [typescript-package-npm-badge]: https://badge.fury.io/js/@typescript-package%2Fcollection
+  [typescript-package-npm-badge-svg]: https://badge.fury.io/js/@typescript-package%2Fcollection-adapter.svg
+  [typescript-package-npm-badge]: https://badge.fury.io/js/@typescript-package%2Fcollection-adapter
 
 <!-- GIT -->
 [git-semver]: http://semver.org/
