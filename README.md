@@ -52,7 +52,7 @@ The `Set` collection adapter.
 import { Collection } from '@typescript-package/collection';
 import { SetAdapter } from '@typescript-package/collection-adapter';
 
-const collection = new Collection(SetAdapter, 1, 2, 3);
+const collection = new Collection(false, SetAdapter, 1, 2, 3);
 
 // Adds.
 collection.add(27, 29, 31, 33);
