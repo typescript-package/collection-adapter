@@ -25,11 +25,11 @@ export class SetAdapter<
     return this.collection.size;
   }
   public get value(): Set<E> {
-    return this.collection as unknown as Set<E>;
+    return this.collection;
   }
   #collection: Set<E>;
   constructor(...collection: E[]) {
-    this.#collection = new Set(collection) as Set<E>;
+    this.#collection = new Set(collection);
   }
   public add(...element: E[]): this {
     return element.forEach(e => this.collection.add(e)), this;
