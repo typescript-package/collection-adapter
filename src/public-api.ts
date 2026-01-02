@@ -3,5 +3,6 @@
  */
 
 export {
+  ArrayAdapter,
   SetAdapter
 } from './lib';

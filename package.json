@@ -1,6 +1,6 @@
 {
   "name": "@typescript-package/collection-adapter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "wwwdev.io <dev@wwwdev.io>",
   "description": "A TypeScript library for collection adapters.",
   "license": "MIT",
