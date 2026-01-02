@@ -8,9 +8,7 @@ import { CollectionAdapter } from '@typedly/collection';
  * @template [T=Set<E>] The type of the underlying Set collection.
  * @implements {CollectionAdapter<E, T>}
  */
-export class SetAdapter<
-  E,
-> implements CollectionAdapter<E, Set<E>> {
+export class SetAdapter<E> implements CollectionAdapter<E, Set<E>> {
   public version: string = '1.0.0';
   get [Symbol.toStringTag](): string {
     return 'SetAdapter';
@@ -43,8 +41,8 @@ export class SetAdapter<
   public delete(...element: E[]): boolean {
     return element.every(e => this.collection.delete(e));
   }
-  public forEach(callbackfn: (element: E, element2: E, collection: CollectionAdapter<E, Set<E>>) => void, thisArg?: any): this {
-    return this.collection.forEach((value, value2) => callbackfn.call(thisArg, value, value2, this as any)), this;
+  public forEach(callbackfn: (element: E, nextElement: E, collection: CollectionAdapter<E, Set<E>>) => void, thisArg?: any): this {
+    return this.collection.forEach((element, nextElement) => callbackfn.call(thisArg, element, nextElement, this as any)), this;
   }
   public has(...element: E[]): boolean {
     return element.every(e => this.collection.has(e));
