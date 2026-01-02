@@ -20,6 +20,7 @@ A TypeScript package for collection adapters.
 - [Installation](#installation)
 - [Api](#api)
   - **Concrete**
+    - [`ArrayAdapter`](#arrayadapter)
     - [`SetAdapter`](#setadapter)
 - [Contributing](#contributing)
 - [Code of Conduct](code-of-conduct)
@@ -38,11 +39,32 @@ npm install @typescript-package/collection-adapter --save-peer
 
 ```typescript
 import {
+  ArrayAdapter,
   SetAdapter,
 } from '@typescript-package/collection-adapter';
 ```
 
 ### Concrete
+
+### `ArrayAdapter`
+
+The `Array` collection adapter.
+
+```typescript
+import { Collection } from '@typescript-package/collection';
+import { ArrayAdapter } from '@typescript-package/collection-adapter';
+
+const collection = new Collection({async: false, value: [1, 2, 3]}, ArrayAdapter, 1, 2, 3);
+
+// Adds.
+collection.add(27, 29, 31, 33);
+// Deletes.
+collection.delete(29, 31);
+
+console.log(`size: `, collection.size); // Output: 5
+```
+
+[`SetAdapter`](https://github.com/typescript-package/collection-adapter/blob/main/src/lib/array.adapter.ts)
 
 ### `SetAdapter`
 
@@ -52,7 +74,7 @@ The `Set` collection adapter.
 import { Collection } from '@typescript-package/collection';
 import { SetAdapter } from '@typescript-package/collection-adapter';
 
-const collection = new Collection(false, SetAdapter, 1, 2, 3);
+const collection = new Collection({async: false, value: new Set([1, 2, 3])}, SetAdapter, 1, 2, 3);
 
 // Adds.
 collection.add(27, 29, 31, 33);
