@@ -64,7 +64,7 @@ collection.delete(29, 31);
 console.log(`size: `, collection.size); // Output: 5
 ```
 
-[`SetAdapter`](https://github.com/typescript-package/collection-adapter/blob/main/src/lib/array.adapter.ts)
+[`ArrayAdapter`](https://github.com/typescript-package/collection-adapter/blob/main/src/lib/array.adapter.ts)
 
 ### `SetAdapter`
 
