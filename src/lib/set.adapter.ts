@@ -1,33 +1,41 @@
 // Interface.
 import { CollectionAdapter } from '@typedly/collection';
+// @typedly
+import { IterValue } from '@typedly/data';
 /**
- * @description The Set collection adapter.
+ * @description The synchronous `Set` collection adapter.
  * @export
  * @class SetAdapter
  * @template E The type of the elements in the Set.
- * @template [T=Set<E>] The type of the underlying Set collection.
- * @implements {CollectionAdapter<E, T>}
+ * @template {Set<E>} [T=Set<E>] The type of the underlying Set collection.
+ * @implements {CollectionAdapter<E, T, false>}
  */
-export class SetAdapter<E> implements CollectionAdapter<E, Set<E>> {
+export class SetAdapter<
+  E,
+  T extends Set<E> = Set<E>,
+> implements CollectionAdapter<E, T, false> {
   public version: string = '1.0.0';
   get [Symbol.toStringTag](): string {
     return 'SetAdapter';
   }
-  [Symbol.iterator](): IterableIterator<E> {
-    return this.#collection[Symbol.iterator]();
+  * [Symbol.iterator](): IterableIterator<IterValue<T>> {
+    yield* this.#collection as unknown as IterableIterator<IterValue<T>>;
   }
-  protected get collection(): Set<E> {
-    return this.#collection;
+  public get async(): false {
+    return false;
   }
   public get size(): number {
     return this.collection.size;
   }
-  public get value(): Set<E> {
+  public get value() {
     return this.collection;
   }
-  #collection: Set<E>;
-  constructor(...collection: E[]) {
-    this.#collection = new Set(collection);
+  protected get collection() {
+    return this.#collection;
+  }
+  #collection: T;
+  constructor(...elements: E[]) {
+    this.#collection = new Set(elements) as T;
   }
   public add(...element: E[]): this {
     return element.forEach(e => this.collection.add(e)), this;
@@ -41,8 +49,11 @@ export class SetAdapter<E> implements CollectionAdapter<E, Set<E>> {
   public delete(...element: E[]): boolean {
     return element.every(e => this.collection.delete(e));
   }
-  public forEach(callbackfn: (element: E, nextElement: E, collection: CollectionAdapter<E, Set<E>>) => void, thisArg?: any): this {
+  public forEach(callbackfn: (element: E, nextElement: E, collection: CollectionAdapter<E, T, false>) => void, thisArg?: any): this {
     return this.collection.forEach((element, nextElement) => callbackfn.call(thisArg, element, nextElement, this as any)), this;
+  }
+  public getValue(): T {
+    return this.collection;
   }
   public has(...element: E[]): boolean {
     return element.every(e => this.collection.has(e));
@@ -50,7 +61,7 @@ export class SetAdapter<E> implements CollectionAdapter<E, Set<E>> {
   public lock(): this {
     return Object.freeze(this.collection), this;
   }
-  public set(value: Set<E>): this {
+  public setValue(value: T): this {
     return (this.#collection = value), this;
   }
 }
