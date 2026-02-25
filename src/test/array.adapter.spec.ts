@@ -1,7 +1,7 @@
 import { Collection } from '@typescript-package/collection';
 import { ArrayAdapter } from '../lib';
 
-const collection = new Collection({async: false, value: [1, 2, 3]}, ArrayAdapter, 1, 2, 3);
+const collection = new Collection(ArrayAdapter, 1, 2, 3);
 
 // Adds.
 collection.add(27, 29, 31, 33);

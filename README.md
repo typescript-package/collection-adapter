@@ -54,7 +54,7 @@ The `Array` collection adapter.
 import { Collection } from '@typescript-package/collection';
 import { ArrayAdapter } from '@typescript-package/collection-adapter';
 
-const collection = new Collection({async: false, value: [1, 2, 3]}, ArrayAdapter, 1, 2, 3);
+const collection = new Collection(ArrayAdapter, 1, 2, 3);
 
 // Adds.
 collection.add(27, 29, 31, 33);
@@ -74,7 +74,7 @@ The `Set` collection adapter.
 import { Collection } from '@typescript-package/collection';
 import { SetAdapter } from '@typescript-package/collection-adapter';
 
-const collection = new Collection({async: false, value: new Set([1, 2, 3])}, SetAdapter, 1, 2, 3);
+const collection = new Collection(SetAdapter, 1, 2, 3);
 
 // Adds.
 collection.add(27, 29, 31, 33);
@@ -97,10 +97,12 @@ If you find this package useful and would like to support its and general develo
 Support via:
 
 - [Stripe](https://donate.stripe.com/dR614hfDZcJE3wAcMM)
-- [Revolut](https://checkout.revolut.com/pay/048b10a3-0e10-42c8-a917-e3e9cb4c8e29)
+- ~~[Revolut](https://checkout.revolut.com/pay/048b10a3-0e10-42c8-a917-e3e9cb4c8e29)~~
 - [GitHub](https://github.com/sponsors/angular-package/sponsorships?sponsor=sciborrudnicki&tier_id=83618)
 - [DonorBox](https://donorbox.org/become-a-sponsor-to-the-angular-package?default_interval=o)
 - [Patreon](https://www.patreon.com/checkout/angularpackage?rid=0&fan_landing=true&view_as=public)
+- [PayPal](https://paypal.me/sterblack)
+- [4Fund](https://4fund.com/bruubs)
 
 or via Trust Wallet
 
