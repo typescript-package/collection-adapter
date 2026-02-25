@@ -1,33 +1,41 @@
 // Interface.
 import { CollectionAdapter } from '@typedly/collection';
+// @typedly
+import { IterValue } from '@typedly/data';
 /**
- * @description The `Array` collection adapter.
+ * @description The synchronous `Array` collection adapter.
  * @export
  * @class ArrayAdapter
  * @template E The type of the elements in the Array.
- * @template [T=Array<E>] The type of the underlying Array collection.
- * @implements {CollectionAdapter<E, T>}
+ * @template {Array<E>} [T=Array<E>] The type of the underlying Array collection.
+ * @implements {CollectionAdapter<E, T, false>}
  */
-export class ArrayAdapter<E> implements CollectionAdapter<E, Array<E>> {
+export class ArrayAdapter<
+  E,
+  T extends Array<E> = Array<E>,
+> implements CollectionAdapter<E, T, false> {
   public version: string = '1.0.0';
   get [Symbol.toStringTag](): string {
     return 'ArrayAdapter';
   }
-  [Symbol.iterator](): IterableIterator<E> {
-    return this.#collection[Symbol.iterator]();
+  * [Symbol.iterator](): IterableIterator<IterValue<T>> {
+    yield* this.#collection as unknown as IterableIterator<IterValue<T>>;
   }
-  protected get collection(): Array<E> {
-    return this.#collection;
+  public get async(): false {
+    return false;
   }
   public get size(): number {
     return this.collection.length;
   }
-  public get value(): Array<E> {
+  public get value(): T {
     return this.collection;
   }
-  #collection: Array<E>;
+  protected get collection(): T {
+    return this.#collection;
+  }
+  #collection: T;
   constructor(...collection: E[]) {
-    this.#collection = new Array(...collection);
+    this.#collection = new Array(...collection) as T;
   }
   public add(...element: E[]): this {
     return element.forEach(e => this.collection.push(e)), this;
@@ -47,7 +55,7 @@ export class ArrayAdapter<E> implements CollectionAdapter<E, Array<E>> {
     });
   }
   public forEach(
-    callbackfn: (element: E, nextElement: E, collection: CollectionAdapter<E, Array<E>>) => void,
+    callbackfn: (element: E, nextElement: E, collection: CollectionAdapter<E, T, false>) => void,
     thisArg?: any
   ): this {
     return this.collection.forEach(
@@ -59,13 +67,16 @@ export class ArrayAdapter<E> implements CollectionAdapter<E, Array<E>> {
       )),
       this;
   }
+  public getValue(): T {
+    return this.collection;
+  }
   public has(...element: E[]): boolean {
     return element.every(e => this.collection.indexOf(e) !== -1);
   }
   public lock(): this {
     return Object.freeze(this.collection), this;
   }
-  public set(value: Array<E>): this {
+  public setValue(value: T): this {
     return (this.#collection = value), this;
   }
 }
